@@ -1,0 +1,13 @@
+---
+- name: Install PHP, Apache
+  command: yum install -y httpd php
+
+- name: Copy PHP config file
+  copy: src=php.ini dest=/etc/
+  notify:
+    - restart httpd
+
+- name: Start httpd Service
+  service: name=httpd state=started 
+
+

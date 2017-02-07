@@ -1,0 +1,26 @@
+---
+- name: Install epel repository
+  hosts: test
+  user: root
+  
+
+  roles:
+    - common
+
+- name: Install mysql-server, php, httpd, zabbix-server to zabbix-servers
+  hosts: zabbix-servers
+  user: root
+  
+
+  roles:
+    - php
+    - mysql
+    - zabbix-server
+
+- name: Install zabbix-agent to zabbix-agents
+  hosts: zabbix-agents
+  user: root
+  
+
+  roles:
+    - zabbix-agent

@@ -1,0 +1,12 @@
+---
+- name: Install zabbix-server
+  command: yum -y install zabbix-server zabbix-server-mysql zabbix-web-mysql
+  tags: zabbix-server
+
+- name: Copy zabbix-server conf
+  copy: src=zabbix_server.conf dest=/etc/zabbix/zabbix_server.conf
+  tags: zabbix-server
+
+- name: Start zabbix_server
+  service: name=zabbix-server state=started enabled=yes
+  tags: zabbix-server
